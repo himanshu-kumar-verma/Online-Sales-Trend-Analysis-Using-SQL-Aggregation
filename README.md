@@ -52,18 +52,10 @@ Dates were converted to ISO format using string functions before applying `strft
 ### Monthly Revenue and Order Volume (All Years)
 ```sql
 SELECT
-    strftime('%Y',
-        substr(InvoiceDate, 7, 4) || '-' ||
-        substr(InvoiceDate, 1, 2) || '-' ||
-        substr(InvoiceDate, 4, 2)
-    ) AS year,
-    strftime('%m',
-        substr(InvoiceDate, 7, 4) || '-' ||
-        substr(InvoiceDate, 1, 2) || '-' ||
-        substr(InvoiceDate, 4, 2)
-    ) AS month,
-    COUNT(DISTINCT InvoiceNo) AS order_volume,
-    SUM(TotalAmount) AS monthly_revenue
+strftime('%Y', InvoiceDate) AS year,
+strftime('%m', InvoiceDate) AS month,
+COUNT(DISTINCT InvoiceNo) AS order_volume
+SUM(TotalAmount) AS monthly_revenue
 FROM online_sales_dataset
 GROUP BY year, month
 ORDER BY year, month;
@@ -73,26 +65,14 @@ ORDER BY year, month;
 ### Filter Sales for a Specific Year (Example: 2020)
 ```sql
 SELECT
-    strftime('%Y',
-        substr(InvoiceDate, 7, 4) || '-' ||
-        substr(InvoiceDate, 1, 2) || '-' ||
-        substr(InvoiceDate, 4, 2)
-    ) AS year,
-    strftime('%m',
-        substr(InvoiceDate, 7, 4) || '-' ||
-        substr(InvoiceDate, 1, 2) || '-' ||
-        substr(InvoiceDate, 4, 2)
-    ) AS month,
-    COUNT(DISTINCT InvoiceNo) AS order_volume,
-    SUM(TotalAmount) AS monthly_revenue
+strftime('%Y', InvoiceDate) AS year,
+strftime('%m', InvoiceDate) AS month,
+COUNT(DISTINCT InvoiceNo) AS order_volume,
+SUM(TotalAmount) AS monthly_revenue
 FROM online_sales_dataset
-WHERE strftime('%Y',
-        substr(InvoiceDate, 7, 4) || '-' ||
-        substr(InvoiceDate, 1, 2) || '-' ||
-        substr(InvoiceDate, 4, 2)
-    ) = '2020'
+WHERE strftime('%Y', InvoiceDate) = '2020'
 GROUP BY year, month
-ORDER BY month;
+ORDER BY year, month;
 ```
 
 
@@ -115,15 +95,13 @@ This output helps identify sales trends, seasonal patterns, and high performing 
 
 
 ## 📂 Project Structure
-```
-├── dataset/
-│   └── online_sales_cleaned.xlsx
-├── sql/
-│   └── task_6_sales_trend_analysis.sql
-├── screenshots/
-│   └── monthly_sales_output.png
-└── README.md
-```
+- Dataset
+  - Online_Sales_Dataset.csv
+- Online_Sales_SQL_Analysis_Files
+  - Online_Sales_Analysis.db
+  - Online_Sales_Analysis.sqbpro
+-Online_Sales_SQL_Analysis_Screenshots
+- Readme.md
 
 
 ## 🚀 Future Enhancements
