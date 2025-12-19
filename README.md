@@ -100,7 +100,8 @@ This output helps identify sales trends, seasonal patterns, and high performing 
 - Online_Sales_SQL_Analysis_Files
   - Online_Sales_Analysis.db
   - Online_Sales_Analysis.sqbpro
--Online_Sales_SQL_Analysis_Screenshots
+
+- Online_Sales_SQL_Analysis_Screenshots
 - Readme.md
 
 
@@ -113,7 +114,9 @@ This output helps identify sales trends, seasonal patterns, and high performing 
 
 ## 👤 Author
 **Name**: Himanshu Kumar Verma
+
 **Skills**: SQL | Excel | Data Analysis  
+
 **GitHub**:
 https://github.com/himanshu-kumar-verma
 
